@@ -32,6 +32,10 @@ const loginUser = asyncHandler(async (req, res) => {
       expires: new Date(Date.now() + 1000 * 3600 * 24),
       httpOnly: true,
     });
+    res.cookie("user", user.name, {
+      expires: new Date(Date.now() + 1000 * 3600 * 24),
+      httpOnly: false,
+    });
 
     res.status(200).json({ success: true, data: user });
   } else {
@@ -85,6 +89,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // Route    =>  /api/users/logout
 const logoutUser = asyncHandler(async (req, res) => {
   res.clearCookie("token");
+  res.clearCookie("user");
   res.status(200).json({ success: true, message: "Signed out" });
 });
 

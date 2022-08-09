@@ -6,11 +6,18 @@ const cookieParser = require("cookie-parser");
 const { errorHandler } = require("./middleware/error.middleware");
 const { expenseRouter } = require("./routes/expense.route");
 const { userRouter } = require("./routes/user.route");
+const cors = require("cors");
 
 // DB connection
 connectDB();
 
 // middleware
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 

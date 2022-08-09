@@ -35,7 +35,7 @@ const addExpense = asyncHandler(async (req, res) => {
   }
 
   //   check if correct reason is given (enum)
-  if (!(reason === "income" || reason === "expense")) {
+  if (!(reason === "saving" || reason === "expense")) {
     res.status(400);
     throw new Error("Please provide the correct reason");
   }

@@ -8,7 +8,7 @@ const expenseSchema = mongoose.Schema(
     },
     reason: {
       type: String,
-      enum: ["expense", "income"],
+      enum: ["expense", "saving"],
       required: true,
     },
     amount: {
